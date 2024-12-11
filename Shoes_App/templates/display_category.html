@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% block content %}
+<div>
+    <div class="card-body " >
+        <div class="table-responsive">
+            <div class="table-responsive">
+                <table class="table align-middle table-nowrap mb-0">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th class="align-middle" scope="col">Shoes Category</th>
+                            <th class="align-middle" scope="col">Shoes Brand</th>
+                            <th class="align-middle" scope="col">Shoes Images</th>
+                            <th class="align-middle" scope="col">Description</th>
+                            <th class="align-middle" scope="col">Action</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for i in pass %}
+                       
+                        <tr>
+                            <td>{{i.Shoes_Category|upper}}</td>
+                            <td>{{i.Shoes_Brand|upper}}</td>
+                            <td><img src="{{i.Shoes_Images.url}}" style="height: 70px; width: 70px;"></td>
+                            <td>{{i.Description}}</td>
+                            <td>
+                                <a href="{% url 'Edit_Category' edit_id=i.id %}">
+                                    <button class="btn btn-sm font-sm rounded btn-success ">
+                                        <i class="material-icons md-edit"></i>Edit</button>
+                                </a>
+
+                                <a href="{% url 'Delete_Category' del_id=i.id %}">
+                                    <button class="btn btn-sm font-sm rounded btn-danger ">
+                                        <i class="material-icons md-delete_forever"></i>Delete</button>
+                                </a>
+
+                            </td>
+                            
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+        <!-- table-responsive end// -->
+    </div>
+    <div class="pagination-area mt-30 mb-50">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-start">
+                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+      {% for i in messages %}
+        {% if i.tags == 'success' %}
+         <script>
+            swal('{{i}}','','success');
+         </script>
+         {% elif i.tags == 'error' %}
+         <script>
+            swal('{{i}}','','error');
+         </script>
+         {% elif i.tags == 'warning' %}
+         <script>
+            swal('{{i}}','','warning');
+         </script>
+         {% else %}
+         <script>
+            swal('{{i}}','','info');
+         </script>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+{% endblock %}

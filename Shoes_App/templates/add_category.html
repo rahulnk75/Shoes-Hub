@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <form action="{% url 'Save_Category' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="col-12">
+        <div class="content-header">
+          <h2 class="content-title">Add New Category</h2>
+          <!-- <div>
+                <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button>
+                <button class="btn btn-md rounded font-sm hover-up">Publich</button>
+            </div> -->
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="card mb-4">
+
+          <div class="card-body">
+            <form>
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Shoes Category</label>
+                <input type="text" placeholder="Shoes Category" class="form-control" id="product_name" name="Shoes_Category_">
+              </div>
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Shoes Brand</label>
+                <input type="text" placeholder="Shoes Brant" class="form-control" id="product_name" name="Shoes_Brand_">
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Shoes Images</label>
+                <input class="form-control" type="file" name="Shoes_Images_">
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Description</label>
+                <textarea placeholder="Description" class="form-control" name="Description_" rows="4"></textarea>
+              </div>
+              <div class="mb-4">
+                <button class="btn btn-sm btn-brand rounded font-sm mt-15">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+      {% for i in messages %}
+        {% if i.tags == 'success' %}
+         <script>
+            swal('{{i}}','','success');
+         </script>
+         {% elif i.tags == 'error' %}
+         <script>
+            swal('{{i}}','','error');
+         </script>
+         {% elif i.tags == 'warning' %}
+         <script>
+            swal('{{i}}','','warning');
+         </script>
+         {% else %}
+         <script>
+            swal('{{i}}','','info');
+         </script>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'index.html' %}
+{% block content %}
+<div>
+    <form action="{% url 'Upload_product' upd_id=key.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <section class="content-main">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-header">
+                        <h2 class="content-title">Edit Product</h2>
+                        <!-- <div>
+                    <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button>
+                    <button class="btn btn-md rounded font-sm hover-up">Publich</button>
+                </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                
+                                <div class="col-md-12"> 
+                                    <div class="mb-4">
+                                        <label class="form-label">Shoes Category</label>
+                                        <select class="form-select" name="Shoes_Category_">
+                                            <option>{{key.Shoes_Category}}</option>
+                                            {% for i in pass %}
+                                            <option>{{i.Shoes_Category}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Shoes Brand</label>
+                                        <select class="form-select" name="Shoes_Brand_">
+                                            <option>{{key.Shoes_Brand}}</option>
+                                            {% for i in pass %}
+                                            <option>{{i.Shoes_Brand}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- col.// -->
+                            </div>
+                           
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Product Name</label>
+                                        <input type="text" placeholder="Product Name" name="Product_Name_"
+                                            class="form-control" value="{{key.Product_Name}}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">MRP</label>
+                                        <input type="number" placeholder="00.0" name="MRP_" class="form-control" value="{{key.MRP}}" >
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Size</label>
+                                        <select class="form-select" name="Size_">
+                                            <option>{{key.Size}}</option>
+                                            <option>Size</option>
+                                                <option>4 UK</option>
+                                                <option>5 UK</option>
+                                                <option>6 UK</option>
+                                                <option>7 UK</option>
+                                                <option>8 UK</option>
+                                                <option>9 UK</option>
+                                                <option>10 UK</option>
+                                                <option>11 UK</option>
+                                                <option>12 UK</option>
+                                           
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Quantity</label>
+                                        <input type="number" placeholder="Quantity" name="Quantity_"
+                                            class="form-control" value="{{key.Quantity}}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Country of origin</label>
+                                        <input type="text" placeholder="Country of origin" name="Country_of_origin_"
+                                            class="form-control" value="{{key.Country_of_origin}}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Manufactured By</label>
+                                        <input type="text" placeholder="Manufactured By" name="Manufactured_By_"
+                                            class="form-control" value="{{key.Manufactured_By}}">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label">Description</label>
+                                        <textarea placeholder="Description" name="Description_" class="form-control"
+                                            rows="4">{{key.Description}}</textarea>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                           
+                            <div class="row">
+                                
+                                
+                                   
+                                
+                            </div> <!-- row.// -->
+
+                            <!-- row.// -->
+                           
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Product Image 1</label>
+                                        <img src="{{key.Product_Image_1.url}}" style="width: 70px; height: 70px;">
+                                        <input class="form-control" type="file" name="Product_Image_1_">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Product Image 2</label>
+                                        <img src="{{key.Product_Image_2.url}}" style="width: 70px; height: 70px;">
+                                        <input class="form-control" type="file" name="Product_Image_2_">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Product Image 3</label>
+                                        <img src="{{key.Product_Image_3.url}}" style="width: 70px; height: 70px;">
+                                        <input class="form-control" type="file" name="Product_Image_3_">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Product Image 4</label>
+                                        <img src="{{key.Product_Image_4.url}}" style="width: 70px; height: 70px;">
+                                        <input class="form-control" type="file" name="Product_Image_4_">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Product Image 5</label>
+                                        <img src="{{key.Product_Image_5.url}}" style="width: 70px; height: 70px;">
+                                        <input class="form-control" type="file" name="Product_Image_5_">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <button class="btn btn-md rounded font-sm hover-up">Upload</button>
+                                </div>
+                                <!-- col.// -->
+                            </div> <!-- .row end// -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </form>
+</div>
+{% endblock %}
